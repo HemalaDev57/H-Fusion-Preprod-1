@@ -25,11 +25,11 @@ pipeline {
                     echo 'Registering the metadata'
                     echo 'Another echo to make the pipeline a bit more complex'
                     def artifactOutput = registerBuildArtifactMetadata(
-                        name: "h-e2e-dm",
-                        version: "1.0.1",
+                        name: "h-e2e-dm-j",
+                        version: "1.0.0",
                         type: "docker",
-                        url: "docker.io/hemaladev57/h-e2e-dm:1.0.1",
-                        digest: "1123f6370647070393461636632373839386",
+                        url: "docker.io/hemaladev57/h-e2e-dm-j:1.0.0",
+                        digest: "0123f6370647070393461636632373839386",
                         label: "prod"
                     )
                     echo "Artifact output is: ${artifactOutput}"
@@ -50,7 +50,7 @@ pipeline {
                 echo "Artifact ID : ${env.ARTIFACT_ID}"
                 registerDeployedArtifactMetadata(
                     id: "${env.ARTIFACT_ID}",
-                    url: "docker.io/hemaladev57/h-e2e-dm:1.0.1",
+                    url: "docker.io/hemaladev57/h-e2e-dm-j:1.0.0",
                     targetEnvironment: "PREPROD",
                     labels: "prod"
                 )    
@@ -64,25 +64,15 @@ pipeline {
                     echo 'Registering the metadata'
                     echo 'Another echo to make the pipeline a bit more complex'
                     def artifactOutput1 = registerBuildArtifactMetadata(
-                        name: "h-e2e-dm-1",
-                        version: "1.0.2",
+                        name: "h-e2e-dm-j-1",
+                        version: "1.0.1",
                         type: "docker",
-                        url: "docker.io/hemaladev57/h-e2e-dm-1:1.0.2",
-                        digest: "11223b63706470703934616366323738393856",
+                        url: "docker.io/hemaladev57/h-e2e-dm-j-1:1.0.1",
+                        digest: "01223b63706470703934616366323738393856",
                         label: "prod"
                     )
                     echo "Artifact output is: ${artifactOutput1}"
                     env.ARTIFACT_ID = artifactOutput1
-                    def artifactOutput2 = registerBuildArtifactMetadata(
-                        name: "h-e2e-dm-2",
-                        version: "1.0.0",
-                        type: "docker",
-                        url: "docker.io/hemaladev57/h-e2e-dm-2:1.0.0",
-                        digest: "11223ba3706470703934616366323738393856",
-                        label: "prod"
-                    )
-                    echo "Artifact output is: ${artifactOutput2}"
-                    env.ARTIFACT_ID_1 = artifactOutput2
                 }
             }
         }
@@ -99,14 +89,7 @@ pipeline {
                 echo "Artifact ID : ${env.ARTIFACT_ID}"
                 registerDeployedArtifactMetadata(
                     id: "${env.ARTIFACT_ID}",
-                    url: "docker.io/hemaladev57/h-e2e-dm-1:1.0.2",
-                    targetEnvironment: "Production",
-                    labels: "prod"
-                )    
-                echo "Artifact ID : ${env.ARTIFACT_ID_1}"
-                registerDeployedArtifactMetadata(
-                    id: "${env.ARTIFACT_ID_1}",
-                    url: "docker.io/hemaladev57/h-e2e-dm-2:1.0.0",
+                    url: "docker.io/hemaladev57/h-e2e-dm-j-1:1.0.1",
                     targetEnvironment: "Production",
                     labels: "prod"
                 )    
