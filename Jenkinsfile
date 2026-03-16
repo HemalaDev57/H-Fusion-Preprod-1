@@ -48,6 +48,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Artifact ID : ${env.ARTIFACT_ID}"
+                exit 1
                 registerDeployedArtifactMetadata(
                     id: "${env.ARTIFACT_ID}",
                     url: "docker.io/hemaladev57/h-e2e-dm-j:1.0.0",
